@@ -107,7 +107,7 @@ func (s *GracefulServer) ListenAndServe() error {
 	if err != nil {
 		return err
 	}
-	log.Println("listen tcp:", addr, "success")
+	log.Println("listen tcp", addr, "success")
 
 	return s.Serve(listener)
 }
