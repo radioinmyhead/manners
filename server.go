@@ -42,6 +42,7 @@ package manners
 
 import (
 	"crypto/tls"
+	"log"
 	"net"
 	"net/http"
 	"sync"
@@ -106,6 +107,7 @@ func (s *GracefulServer) ListenAndServe() error {
 	if err != nil {
 		return err
 	}
+	log.Println("listen tcp:", addr, "success")
 
 	return s.Serve(listener)
 }
@@ -213,6 +215,7 @@ func (s *GracefulServer) Serve(listener net.Listener) error {
 		s.up <- listener
 	}
 
+	log.Println("server ready!")
 	err := s.Server.Serve(listener)
 
 	// This block is reached when the server has received a shut down command
